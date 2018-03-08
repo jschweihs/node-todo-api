@@ -10,6 +10,7 @@ var app = express();
 // Middleware
 app.use(bodyParser.json());
 
+// Add new todo
 app.post('/todos', (req, res) => {
   console.log(req.body);
   var todo = new Todo({
@@ -21,6 +22,15 @@ app.post('/todos', (req, res) => {
   }, (e) => {
     res.status(400).send(e);
   });
+});
+
+// Get todos
+app.get('/todos', (req, res) => {
+  Todo.find().then((todos) => {
+    res.send({todos});
+  }, (e) => {
+    res.status(400).send(e);
+  })
 });
 
 app.listen(3000, () => {
