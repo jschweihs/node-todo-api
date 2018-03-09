@@ -5,6 +5,10 @@ const {Todo} = require('./../server/models/todo');
 // Sample ObjectID
 var id = '5aa11f74ff3938d225b83a2a';
 
+if (!ObjectID.isValid(id)) {
+  console.log('Id not valid');
+}
+
 Todo.find({
   _id: id // Can pass in string as id with mongoose
 }).then((todos) => {
