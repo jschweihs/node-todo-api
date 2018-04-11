@@ -97,9 +97,9 @@ describe('GET /todos/:id', () => {
     // expect 404
     var hexId = new ObjectID().toHexString();
     request(app)
-    .get(`/todos/${hexId}`)
-    .expect(404)
-    .end(done);
+      .get(`/todos/${hexId}`)
+      .expect(404)
+      .end(done);
   });
 
   it('should return 404 for non-object ids', (done) => {
