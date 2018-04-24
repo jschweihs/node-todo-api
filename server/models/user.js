@@ -54,6 +54,16 @@ UserSchema.methods.generateAuthToken = function () {
   });
 };
 
+// Logout user given a JWT by deleting JWT
+UserSchema.methods.removeToken = function (token) {
+  var user = this;
+  return user.update({
+    $pull: {
+      tokens: {token}
+    }
+  });
+}
+
 // Return user given a JWT
 UserSchema.statics.findByToken = function (token) {
   var User = this;
